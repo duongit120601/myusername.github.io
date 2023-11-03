@@ -1,8 +1,8 @@
-name: CI/CD
-
+name: CI/CD Pipeline
 on:
-  schedule:
-    - cron: "*/5 * * * *"
+  push:
+    branches:
+      - main
 
 jobs:
   build:
@@ -12,14 +12,5 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Update HTML
-        run: |
-          echo "<h1>Hello</h1>" > index.html
-          
-      - name: Commit and push changes
-        run: |
-          git config --global user.name "duong"
-          git config --global user.email "daoduong2k1k.vk@gmail.com"
-          git add index.html
-          git commit -m "Update HTML"
-          git push
+      - name: Build and deploy
+        run: echo "hello"
